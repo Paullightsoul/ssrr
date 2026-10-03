@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day</title>
-    <link rel="icon" href="media\VM1fcpu2bKs1e2Kdbj\love_icon-icons.com_67808.ico" type="image/x-icon"> </head>
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="352c7074-be3e-407a-b40e-f2dd3838fa3f"></script>
+    <link rel="icon" href="media/VM1fcpu2bKs1e2Kdbj/love_icon-icons.com_67808.ico" type="image/x-icon">
+</head>
     <style>
         body {
             background-color: #ffc8fd;
@@ -85,8 +85,10 @@
             const yourName = document.getElementById('yourName').value;
             const baeName = document.getElementById('baeName').value;
             if (yourName && baeName) {
-                const link = `https://vt.shizuka.my.id/valentine.html?from=${encodeURIComponent(yourName)}&to=${encodeURIComponent(baeName)}`;
-                document.getElementById('linkField').value = link;
+                const link = new URL('valentine.html', new URL('.', window.location.href));
+                link.searchParams.set('from', yourName);
+                link.searchParams.set('to', baeName);
+                document.getElementById('linkField').value = link.href;
                 document.getElementById('generatedLink').style.display = 'block';
             } else {
                 alert('Please enter both names!');
