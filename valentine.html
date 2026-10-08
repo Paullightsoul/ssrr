@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>снинолуга</title>
+    <title>учись</title>
     <style>
         body {
             background-color: #ffc8fd;
@@ -67,7 +67,8 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="title">снинолуга</h1>
+        <h1 id="title">учись</h1>
+        <audio id="cheer" src="track.mp3" preload="auto" loop></audio>
         <div class="gif">
             <img src="media/VM1fcpu2bKs1e2Kdbj/200w.gif" alt="Cute gif">
         </div>
@@ -88,7 +89,7 @@
         if (fromParam) document.getElementById('from').textContent = fromParam;
         if (toParam) document.getElementById('to').textContent = toParam;
 
-        const steps = ['снинолуга', 'ты попа?', 'ты казявка'];
+        const steps = ['учись', 'быстрее быстрее', 'гоу смотерть дальше'];
         let step = 0;
         let yesBtnSize = 1;
         let noBtnSize = 1;
@@ -97,6 +98,14 @@
         const buttons = document.getElementById('buttons');
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
+        const cheer = document.getElementById('cheer');
+
+        function startCheer() {
+            cheer.play().catch(() => {});
+        }
+
+        startCheer();
+        document.addEventListener('pointerdown', startCheer, { once: true });
 
         function showStep() {
             title.textContent = steps[step];
